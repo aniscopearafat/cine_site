@@ -4,3 +4,4 @@
 *.log
 *.zip
 .DS_Store
+config.php
