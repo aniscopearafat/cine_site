@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>CineVault — Movies & Series</title>
+  <meta name="description" content="Explore a curated catalog of movies and TV series.">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='15' fill='%23e8422e'/%3E%3Cpath d='M22 18h20v7H29v14h13v7H22z' fill='white'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Oswald:wght@500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <button class="icon-btn mobile-only" id="menuBtn" aria-label="Open menu">☰</button>
+    <a class="brand" href="#home" aria-label="CineVault home"><span class="brand-mark">C</span><span>CINE<strong>VAULT</strong></span></a>
+    <nav class="desktop-nav" aria-label="Primary"><a href="/">Home</a><a href="/?type=movie#catalog">Movies</a><a href="/?type=series#catalog">TV & Series</a><a href="/?collection=anime#catalog">Anime</a><a href="/?collection=superhero#catalog">Superhero</a></nav>
+    <form class="search" id="catalog-search" role="search" action="/"><input id="searchInput" name="q" type="search" placeholder="Search titles, cast, genre…" aria-label="Search catalog"><button type="submit" aria-label="Search">⌕</button></form>
+    <button class="icon-btn mobile-only" id="searchBtn" aria-label="Open search">⌕</button>
+  </header>
+
+  <aside class="drawer" id="drawer" aria-hidden="true">
+    <div class="drawer-head"><span class="brand">CINE<strong>VAULT</strong></span><button class="icon-btn" id="closeMenu" aria-label="Close menu">×</button></div>
+    <a href="/">Home</a><a href="/?type=movie#catalog">Movies</a><a href="/?type=series#catalog">TV Series</a><a href="/?collection=anime#catalog">Anime</a><a href="/?collection=superhero#catalog">Superhero</a>
+  </aside>
+  <div class="scrim" id="scrim"></div>
+
+  <main id="home">
+    <section class="az" aria-label="Filter by first letter"><button class="active" data-letter="All">All</button><button data-letter="#">#</button><div id="letters"></div></section>
+
+    <section class="hero" id="hero" hidden></section>
+
+    <div data-slot="homepage-top"></div><section class="catalog-shell" id="catalog">
+      <div class="catalog-main">
+        <div class="section-head"><div><span class="kicker">CURATED FOR YOU</span><h2>Featured titles</h2></div><div class="filters"><button class="filter active" data-filter="All">All</button><button class="filter" data-filter="Movie">Movies</button><button class="filter" data-filter="Series">Series</button></div></div>
+        <p id="search-status" role="status" aria-live="polite"></p>
+        <div class="movie-grid" id="movieGrid"><p>Loading catalog…</p></div>
+        <div class="empty" id="emptyState" hidden><strong>No titles found</strong><span>Try another search or filter.</span><button id="clearFilters">Clear filters</button></div>
+        <div data-slot="homepage-middle"></div><section class="strip-section"><div class="section-head"><div><span class="kicker">FRESH DROPS</span><h2>Recently updated</h2></div><button class="text-btn" id="showAll">View all →</button></div><div class="mini-list" id="miniList"></div></section>
+      </div>
+      <aside class="sidebar">
+        <div class="side-card"><h3>Latest updates</h3><div id="updates"></div></div>
+        <div data-slot="sidebar"></div>
+        <div class="side-card" id="genres"><h3>Browse genres</h3><div class="genre-cloud"></div></div>
+      </aside>
+    </section>
+
+  </main>
+
+  <div data-slot="footer"></div><footer><a class="brand" href="#home"><span class="brand-mark">C</span><span>CINE<strong>VAULT</strong></span></a><p>Discover stories. Follow worlds. External links are for owner-authorized content only.</p><nav><a href="/?type=movie#catalog">Movies</a><a href="/?type=series#catalog">Series</a><a href="/?collection=anime#catalog">Anime</a><a href="/?collection=superhero#catalog">Superhero</a></nav><small>© 2026 CineVault.</small></footer>
+
+  <div class="toast" id="toast" role="status"></div>
+  <script src="app.js"></script>
+  <script src="/ads.js" defer></script>
+</body>
+</html>
